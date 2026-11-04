@@ -1,7 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("com.android.application") version "8.5.2"
+    id("org.jetbrains.kotlin.android") version "1.9.24"
 }
+
 android {
     namespace = "com.galabs.voicealarm"
     compileSdk = 34
@@ -12,6 +13,14 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
-    compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
     kotlinOptions { jvmTarget = "17" }
+    sourceSets.getByName("main") { manifest.srcFile("AndroidManifest.xml") }
+}
+
+kotlin {
+    sourceSets.getByName("main").kotlin.srcDir(".").include("*.kt")
 }
